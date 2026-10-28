@@ -247,12 +247,6 @@ table.Hall td.busy {
     font-style: normal;
     margin-top: 8px;
 }
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
 .Hero-text,
 .Hero-poster {
     animation: fadeUp 0.8s ease-out both;
@@ -261,12 +255,6 @@ table.Hall td.busy {
 .Hero-poster {
     animation-delay: 0.2s;
 }
-
-@media (max-width: 768px) {
-    #Head .Center-box {
-        flex-direction: column;
-        gap: 12px;
-    }
 
     #Main-panel ul {
         flex-wrap: wrap;

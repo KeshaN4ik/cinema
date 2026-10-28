@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>КиноЗал — выбор места</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+</head>
+<body>
+
+    <header id="Head">
+        <div class="Center-box">
+            <a href="index.html" class="Logo">
+                <img src="img/logo.jpg" alt="Логотип КиноЗал" class="Logo-img">
+                <span>КиноЗал</span>
+            </a>
+            <nav id="Main-panel">
+                <ul>
+                    <li><a href="index.html">Афиша</a></li>
+                    <li><a href="#hall">Выбор места</a></li>
+                    <li><a href="#footer">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="Hero">
+            <div class="Center-box">
+                <article class="Hero-text">
+                    <h1>Добро пожаловать в КиноЗал</h1>
+                    <p>
+                        Выберите фильм, сеанс и удобное место в зале.
+                        Оплата билета — онлайн, без очередей.
+                    </p>
+                    <a href="#hall" class="Button">Выбрать место</a>
+                </article>
+
+                <figure class="Hero-poster">
+                    <a href="img/poster.jpg" data-fancybox="gallery" data-caption="Премьера недели">
+                        <img src="img/poster.jpg" alt="Афиша фильма">
+                    </a>
+                    <figcaption>Премьера недели</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="hall">
+            <div class="Center-box">
+                <h2>Схема зала</h2>
+                <p class="Screen">ЭКРАН</p>
+
+                <table class="Hall">
+                    <tr>
+                        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+                    </tr>
+                    <tr>
+                        <td>7</td><td class="busy">8</td><td>9</td><td class="busy">10</td><td>11</td><td>12</td>
+                    </tr>
+                    <tr>
+                        <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+                    </tr>
+                    <tr>
+                        <td>19</td><td>20</td><td class="busy">21</td><td>22</td><td>23</td><td>24</td>
+                    </tr>
+                </table>
+
+                <p class="Counter">Выбрано мест: <span id="count">0</span></p>
+
+                <p class="Legend">
+                    <span class="Seat free"></span> свободно
+                    <span class="Seat busy"></span> занято
+                    <span class="Seat chosen"></span> выбрано
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="Center-box">
+            <p>КиноЗал © 2024. Все права защищены.</p>
+            <address>
+                Разработчик: <a href="mailto:student@mail.ru">Студент</a>
+            </address>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {});
+
+        var hall = document.querySelector("table.Hall");
+        var counter = document.getElementById("count");
+
+        hall.onclick = function (e) {
+            if (e.target.tagName !== "TD") return;
+            if (e.target.classList.contains("busy")) return;
+            e.target.classList.toggle("chosen");
+            updateCount();
+        };
+
+        function updateCount() {
+            var chosen = hall.querySelectorAll("td.chosen");
+            counter.textContent = chosen.length;
+        }
+    </script>
+
+</body>
+</html>

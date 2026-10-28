@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
 </head>
 <body>
-
     <header id="Head">
         <div class="Center-box">
             <a href="index.html" class="Logo">
@@ -67,9 +66,7 @@
                         <td>19</td><td>20</td><td class="busy">21</td><td>22</td><td>23</td><td>24</td>
                     </tr>
                 </table>
-
                 <p class="Counter">Выбрано мест: <span id="count">0</span></p>
-
                 <p class="Legend">
                     <span class="Seat free"></span> свободно
                     <span class="Seat busy"></span> занято
@@ -78,7 +75,6 @@
             </div>
         </section>
     </main>
-
     <footer id="footer">
         <div class="Center-box">
             <p>КиноЗал © 2024. Все права защищены.</p>
@@ -87,26 +83,21 @@
             </address>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
         Fancybox.bind("[data-fancybox]", {});
-
         var hall = document.querySelector("table.Hall");
         var counter = document.getElementById("count");
-
         hall.onclick = function (e) {
             if (e.target.tagName !== "TD") return;
             if (e.target.classList.contains("busy")) return;
             e.target.classList.toggle("chosen");
             updateCount();
         };
-
         function updateCount() {
             var chosen = hall.querySelectorAll("td.chosen");
             counter.textContent = chosen.length;
         }
     </script>
-
 </body>
 </html>
